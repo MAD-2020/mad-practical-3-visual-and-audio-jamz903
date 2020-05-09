@@ -15,12 +15,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //audio
         MediaPlayer media = MediaPlayer.create(this, R.raw.baby_laughing);
         media.start();
 
+        //once done with playback
+        if(!media.isPlaying()){
+            media.release();
+            media = null;
+        }
 
+        //video
         VideoView view = findViewById(R.id.videoView);
         view.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.rabbid));
         view.start();
+
+
+
+
+
     }
 }
